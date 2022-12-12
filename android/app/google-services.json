@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "959640673986",
+    "project_id": "streamfirebase-845b5",
+    "storage_bucket": "streamfirebase-845b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959640673986:android:d79bb7c07722d64c0aa55b",
+        "android_client_info": {
+          "package_name": "com.example.streamfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959640673986-2ekd2dhdgjsfjlk63vs7vk0a0oequidu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.streamfirebase",
+            "certificate_hash": "9a96d7e93effe46eb4416c84c0d8aefd502cf5fd"
+          }
+        },
+        {
+          "client_id": "959640673986-dn62ml85i0mjdphbjcif8eq1rpih77iu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.streamfirebase",
+            "certificate_hash": "41a921818e97d5625f87acdb32a732b0d95d18f4"
+          }
+        },
+        {
+          "client_id": "959640673986-da97k25e15q82eclkkd8fjb4ffsvn92d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSJGWUDLDkhQHMBWP4HYVC5SiBffLahaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959640673986-da97k25e15q82eclkkd8fjb4ffsvn92d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
