@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class ChatPage extends StatefulWidget {
+  const ChatPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ChatPageState extends State<ChatPage> {
   final _chat = TextEditingController();
 
   final Stream<QuerySnapshot> streamdata =
@@ -23,10 +23,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey.shade200,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(254, 30, 150, 138),
-        title: const Text("Chat Page"),
+        backgroundColor: Colors.transparent,
+        leading: const Icon(
+          Icons.arrow_back_ios_new,
+          color: Color(0xff1f3250),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(
+                  "https://storage.googleapis.com/cms-storage-bucket/780e0e64d323aad2cdd5.png"),
+              backgroundColor: Colors.white12,
+              radius: 20,
+            ),
+          )
+        ],
+        title: const Text(
+          "Chat Page",
+          style: TextStyle(color: Color(0xff172c49), fontSize: 25),
+        ),
+        elevation: 0,
         centerTitle: true,
       ),
       body: StreamBuilder(
@@ -91,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                                           : const SizedBox();
                             },
                             borderRadius: BorderRadius.circular(10),
-                            backgroundColor: Colors.red,
+                            backgroundColor: Colors.redAccent,
                             foregroundColor: Colors.white,
                             icon: Icons.delete,
                           ),
@@ -108,76 +127,66 @@ class _HomePageState extends State<HomePage> {
                           padding: ruchitId != null
                               ? const EdgeInsets.only(left: 50)
                               : const EdgeInsets.only(right: 50),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: ruchitId != null
-                                  ? const BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      topLeft: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                    )
-                                  : const BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      topLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                            ),
-                            elevation: 0.0,
-                            color: ruchitId != null
-                                ? Colors.green[100]
-                                : Colors.white,
-                            margin: const EdgeInsets.all(10),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    harshId != null
-                                        ? "Harsh"
-                                        : pradipId != null
-                                            ? "Pradip"
-                                            : "Ruchit",
-                                    style: TextStyle(
-                                        color: harshId != null
-                                            ? Colors.red
-                                            : pradipId != null
-                                                ? Colors.green
-                                                : Colors.blue,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Wrap(
-                                    alignment: WrapAlignment.end,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: ruchitId != null
+                                      ? const BorderRadius.only(
+                                          topRight: Radius.circular(15),
+                                          topLeft: Radius.circular(15),
+                                          bottomLeft: Radius.circular(15),
+                                        )
+                                      : const BorderRadius.only(
+                                          topRight: Radius.circular(15),
+                                          topLeft: Radius.circular(15),
+                                          bottomRight: Radius.circular(15),
+                                        ),
+                                ),
+                                elevation: 0.0,
+                                color: ruchitId != null
+                                    ? const Color(0xffff5a6e)
+                                    : const Color(0x4dacc2ca),
+                                margin: const EdgeInsets.all(10),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        storeData[index]['text'],
-                                        style: const TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      const SizedBox(
-                                        width: 7,
-                                      ),
-                                      Column(
+                                      Wrap(
+                                        alignment: WrapAlignment.end,
                                         children: [
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
                                           Text(
-                                            date.toString(),
-                                            style: const TextStyle(
-                                                fontSize: 13,
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.bold),
+                                            storeData[index]['text'],
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: ruchitId != null
+                                                  ? Colors.white
+                                                  : const Color(0xff172c49),
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                child: Text(
+                                  date.toString(),
+                                  style: const TextStyle(
+                                      fontSize: 13,
+                                      color: Color(0x73acc2ca),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -188,24 +197,30 @@ class _HomePageState extends State<HomePage> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: Row(
                     children: [
                       Expanded(
                         child: TextFormField(
+                          textCapitalization: TextCapitalization.sentences,
                           controller: _chat,
                           minLines: 1,
                           maxLines: 5,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             contentPadding:
-                                const EdgeInsets.only(left: 25, bottom: 10, top: 20),
+                                EdgeInsets.only(left: 10, bottom: 10, top: 20),
                             filled: true,
                             hintText: "Type a message",
-                            hintStyle: const TextStyle(color: Colors.blueGrey),
-                            fillColor: Colors.white,
+                            hintStyle: TextStyle(color: Colors.blueGrey),
+                            fillColor: Color.fromRGBO(183, 189, 193, 100),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(350),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(12),
+                                bottomRight: Radius.circular(12),
+                                topLeft: Radius.circular(12),
+                                topRight: Radius.circular(12),
+                              ),
                             ),
                           ),
                         ),
@@ -215,7 +230,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       CircleAvatar(
                         radius: 25,
-                        backgroundColor: const Color.fromARGB(254, 30, 150, 138),
+                        backgroundColor: const Color(0xff172c49),
                         child: IconButton(
                           onPressed: () async {
                             if (_chat.text == "") {
